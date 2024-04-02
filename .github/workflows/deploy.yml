@@ -35,8 +35,6 @@ jobs:
         with:
           node-version: 20
           cache: "npm"
-      - name: Navigate to age calc app
-        run: cd 1_age-calculator-app
       - name: Install dependencies
         run: npm ci
       - name: Build
