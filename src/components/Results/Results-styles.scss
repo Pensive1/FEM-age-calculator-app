@@ -1,0 +1,24 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+.age {
+  padding-top: 8rem;
+  font-size: clamp($size-input, 5.6rem, 14vw);
+  font-weight: 800;
+  font-style: italic;
+  line-height: 7rem;
+  @include desktop {
+    padding-top: 6rem;
+    font-size: 10.5rem;
+    line-height: 12rem;
+  }
+
+  &__data {
+    display: flex;
+    gap: 1rem;
+  }
+
+  &__value {
+    color: $color-primary-purple;
+    width: max-content;
+  }
+}

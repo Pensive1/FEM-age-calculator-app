@@ -1,0 +1,18 @@
+@use "./variables" as *;
+
+@mixin mobile {
+  @media screen and (min-width: $width-mobile) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $width-desktop) {
+    @content;
+  }
+}
+
+@mixin column-flex {
+  display: flex;
+  flex-direction: column;
+}

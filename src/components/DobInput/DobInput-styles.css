@@ -1,0 +1,103 @@
+.dob {
+  display: flex;
+  align-items: start;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
+  position: relative;
+  border-bottom: 1px solid hsl(0, 0%, 86%);
+  padding-bottom: 3.2rem;
+}
+@media screen and (min-width: 1440px) {
+  .dob {
+    padding-bottom: 5rem;
+    padding-right: 30%;
+  }
+}
+.dob__fields {
+  border: none;
+  display: flex;
+  flex-direction: column-reverse;
+  row-gap: 1rem;
+  flex: 1 0;
+}
+@media screen and (min-width: 1440px) {
+  .dob__field {
+    font-size: 1.4rem;
+  }
+}
+.dob__field-label {
+  font-size: 1.2rem;
+  color: hsl(0, 1%, 44%);
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+}
+.dob__field-err {
+  color: hsl(0, 100%, 67%);
+  min-height: 3.2rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+@media screen and (min-width: 1440px) {
+  .dob__field-err {
+    min-height: 1.6rem;
+  }
+}
+.dob__input {
+  border: 1px solid hsl(0, 0%, 86%);
+  padding: 1rem;
+  border-radius: 1rem;
+  height: 5rem;
+  width: 100%;
+  font-size: 2rem;
+  caret-color: hsl(259, 100%, 65%);
+}
+@media screen and (min-width: 1440px) {
+  .dob__input {
+    font-size: 3.2rem;
+    height: 7rem;
+  }
+}
+.dob__input:focus, .dob__input:hover {
+  outline-color: hsl(259, 100%, 65%);
+  border-color: hsl(259, 100%, 65%);
+}
+.dob__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.dob__input:invalid {
+  border-color: hsl(0, 100%, 67%);
+}
+.dob__input:invalid + .dob__field-label {
+  color: hsl(0, 100%, 67%);
+}
+.dob__submit {
+  border-radius: 50%;
+  border: none;
+  background-image: url(../../assets/images/icon-arrow.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 2.6rem;
+  background-color: hsl(259, 100%, 65%);
+  width: 6.5rem;
+  aspect-ratio: 1/1;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  transform: translate(50%, 50%);
+  transition: all 0.5s;
+}
+@media screen and (min-width: 1440px) {
+  .dob__submit {
+    width: 10rem;
+    right: 0;
+    transform: translate(0, 50%);
+    background-size: 4.6rem;
+  }
+}
+.dob__submit:hover {
+  background-color: hsl(0, 0%, 8%);
+}/*# sourceMappingURL=DobInput-styles.css.map */
