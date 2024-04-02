@@ -46,8 +46,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [GitHub](https://github.com/Pensive1/FEM-age-calculator-app)
+- Live Site URL: [Preview](https://pensive1.github.io/FEM-age-calculator-app/)
 
 ## My process
 
@@ -135,6 +135,10 @@ Users should be able to:
   The 'e' _(Eulers number)_, '+' and '-' values are used to represent numbers. However, 'e' or 'E' sets the `badInput` validation value to `true`, triggering the field's invalid state.
 
   On top of validating against bad inputs, it improves the user experience to prevent these characters from being entered.
+
+#### Deployment (GitHub Pages)
+
+I [learned how to deploy an automated vite app](https://vitejs.dev/guide/static-deploy) build using GitHub Actions and configuring `vite.config` accordingly. This was my first time working with GitHub Actions and would love to learn more things I could automate.
 
 ### Continued development
 
