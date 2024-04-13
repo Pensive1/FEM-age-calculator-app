@@ -27,7 +27,7 @@ export const blockInvalidChars = (e: React.KeyboardEvent) => {
   ["e", "E", "+", "-"].includes(e.key) && e.preventDefault();
 };
 
-const clearErrors = (fieldRef: fieldRef, fnShowErr: fnShowErr) => {
+export const clearErrors = (fieldRef: fieldRef, fnShowErr: fnShowErr) => {
   const field = fieldRef.current;
 
   field?.setCustomValidity("");
@@ -95,6 +95,18 @@ export const yearCheck = (fieldRef: fieldRef, fnShowErr: fnShowErr) => {
 
   if (yearVal <= 0) {
     return invalidValueErr(fieldRef, fnShowErr, "Invalid year");
+  }
+
+  if (
+    yearField?.value &&
+    yearField?.value.length > 1 &&
+    yearField?.value.charAt(0) === "0"
+  ) {
+    return invalidValueErr(
+      fieldRef,
+      fnShowErr,
+      "Years shouldn't start with zero"
+    );
   }
   clearErrors(fieldRef, fnShowErr);
 };

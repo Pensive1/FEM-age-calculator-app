@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DOBInput } from "../../types/ComponentProps";
 import detailedAge from "../../utils/AgeCalc";
 import {
@@ -7,6 +7,7 @@ import {
   dateCheck,
   monthCheck,
   yearCheck,
+  clearErrors,
 } from "../../utils/Validations";
 import "./DobInput-styles.scss";
 
@@ -19,9 +20,30 @@ const DobInput = ({
   const dobMonth = useRef<HTMLInputElement>(null);
   const dobDay = useRef<HTMLInputElement>(null);
 
+  const yearField = dobYear.current;
+  const monthField = dobMonth.current;
+  const dayField = dobDay.current;
+
   const [dateErr, setDateErr] = useState("");
   const [monthErr, setMonthErr] = useState("");
   const [yearErr, setYearErr] = useState("");
+
+  const allValidFields = [
+    dayField?.validity.valid,
+    monthField?.validity.valid,
+    yearField?.validity.valid,
+  ].every((field) => field === true);
+
+  const checkAllFields = () => {
+    if (allValidFields) {
+      //Final check to clear date error : "Must be a valid date" (added onSubmit through handleSubmit)
+      clearErrors(dobDay, setDateErr);
+    }
+  };
+
+  useEffect(() => {
+    checkAllFields();
+  }, [yearField?.value, monthField?.value, dayField?.value]);
 
   // Auto-switch fields
   const nextFieldFocus = (
@@ -37,22 +59,11 @@ const DobInput = ({
 
   const handleSubmit = (e: React.SyntheticEvent): void => {
     e.preventDefault();
-
-    const yearField = dobYear.current;
-    const monthField = dobMonth.current;
-    const dayField = dobDay.current;
-
-    const fieldCollection = yearField && monthField && dayField;
-    const allValidFields = [
-      dayField?.validity.valid,
-      monthField?.validity.valid,
-      yearField?.validity.valid,
-    ].every((fieldIsValid) => fieldIsValid === true);
-    const noErrors = fieldCollection && allValidFields;
-
+    const noEmptyFields = yearField && monthField && dayField;
     const isValidDate =
-      fieldCollection &&
+      noEmptyFields &&
       checkFullDate(dayField?.value, monthField?.value, yearField?.value);
+    const noErrors = noEmptyFields && allValidFields;
 
     if (noErrors && isValidDate) {
       const yearVal = +yearField.value;
@@ -129,6 +140,9 @@ const DobInput = ({
           max={new Date().getFullYear()}
           onBlur={() => yearCheck(dobYear, setYearErr)}
           onInput={() => {
+            yearCheck(dobYear, setYearErr);
+          }}
+          onChange={() => {
             yearCheck(dobYear, setYearErr);
           }}
           onKeyDown={blockInvalidChars}
